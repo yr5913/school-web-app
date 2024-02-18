@@ -22,7 +22,7 @@ public class SecurityConfig {
         //http.authorizeHttpRequests((requests) -> requests.anyRequest().denyAll());
         http.authorizeHttpRequests((requests) -> requests.requestMatchers("/home", "/").permitAll()
                 .requestMatchers("/holidays/**").permitAll()
-                .requestMatchers("/contact").authenticated()
+                .requestMatchers("/contact").permitAll()
                 .requestMatchers("/saveMsg").permitAll()
                 .requestMatchers("/courses").permitAll()
                 .requestMatchers("/about").permitAll()
