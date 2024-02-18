@@ -3,7 +3,6 @@
 This project works on creating a school web application using spring boot. This project has step by step incremental
 changes in the spring boot application, which enables learning.
 You can look at the commit history section of the readme file to understand the incremental changes made to this project
-
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
