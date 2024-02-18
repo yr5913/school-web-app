@@ -1,17 +1,28 @@
 package com.yugeshreganti.school.service;
 
 import com.yugeshreganti.school.model.Contact;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.RequestScope;
 
 @Service
 @Slf4j
+@RequestScope
+@Getter
+@Setter
 public class ContactService {
+
+    public ContactService() {
+        System.out.println("Contact Service is created");
+    }
+
+    private int counter;
 
     public void saveMessage(Contact contact) {
         log.info("Contact Information is: " + contact);
     }
+
 
 }

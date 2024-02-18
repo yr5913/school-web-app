@@ -46,12 +46,13 @@ public class ContactController {
 
     @PostMapping(value = "/saveMsg")
     public String saveMessage(@Valid @ModelAttribute Contact contact, Errors errors) {
-        contactService.saveMessage(contact);
         if (errors.hasErrors()) {
             log.error("Errors are present in the contact form" + errors);
             return "contact.html";
         }
-
+        contactService.saveMessage(contact);
+        contactService.setCounter(contactService.getCounter() + 1);
+        System.out.println("The counter of the contact service is: " + contactService.getCounter());
         return "redirect:/contact";
 
     }
