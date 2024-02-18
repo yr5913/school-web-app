@@ -56,4 +56,5 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 17. Made changes to use Lombok for pojos
 18. Used slf4j for logging
 19. Added request params for displaying holidays to filter holidays based on request params
+20. Changed the holidays filter from request params to path variables, by default display all holidays, if filter is used display holidays related to the filter
 
