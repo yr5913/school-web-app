@@ -27,9 +27,13 @@ public class SecurityConfig {
                 .requestMatchers("/courses").permitAll()
                 .requestMatchers("/about").permitAll()
                 .requestMatchers("/assets/**").permitAll()
+                .requestMatchers("/dashboard").authenticated()
+                .requestMatchers("/login").permitAll()
         );
         http.csrf(AbstractHttpConfigurer::disable);
-        http.formLogin(withDefaults());
+        http.formLogin(formLogin -> formLogin.loginPage("/login").defaultSuccessUrl("/dashboard")
+                .failureUrl("/login?error=true").permitAll());
+        http.logout(logout -> logout.logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll());
         http.httpBasic(withDefaults());
         return http.build();
     }
