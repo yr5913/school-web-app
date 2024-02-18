@@ -60,4 +60,5 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 21. Added server side field validations using jakarta validations
 22. Working with request scope by changing the contact service to RequestScope
 23. Working with session scope by changing the contact service to SessionScope
+24. Working with application scope by changing the contact service to ApplicationScope
 
