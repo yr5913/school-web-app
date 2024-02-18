@@ -47,4 +47,5 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 8. disabling thymeleaf cache using spring properties
 9. enabled dev tools for auto start and live reload
 10. Added all the home.html html, css and js code
+11. Added all thymeleaf templates required
 
