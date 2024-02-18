@@ -62,3 +62,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 24. Working with application scope by changing the contact service to ApplicationScope
 25. Implemented default spring security by adding dependency 
 26. Changed default spring credentials using application.properties
+27. created custom security filter chain and permitting all web pages using permitAll
