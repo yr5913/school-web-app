@@ -39,4 +39,5 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 
 1. Start Web application which displays home.html to user with the path /home
 2. Changed the port number and servlet context path
+3. Started the web application at random port by setting the server.port value to 0
 
