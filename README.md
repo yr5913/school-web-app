@@ -50,4 +50,5 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 11. Added all thymeleaf templates required
 12. Implemented WebMvcConfigurer class for static views
 13. Added static view for the about page
+14. Added controller for the contact page and accepting the data from the form in the contact page using @Requestparam
 
