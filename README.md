@@ -41,4 +41,5 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 2. Changed the port number and servlet context path
 3. Started the web application at random port by setting the server.port value to 0
 4. Turned debug on for the condition evaluation report
+5. excluding DataSourceAutoConfiguration.class to test
 
