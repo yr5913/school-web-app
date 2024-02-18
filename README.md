@@ -59,4 +59,5 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 20. Changed the holidays filter from request params to path variables, by default display all holidays, if filter is used display holidays related to the filter
 21. Added server side field validations using jakarta validations
 22. Working with request scope by changing the contact service to RequestScope
+23. Working with session scope by changing the contact service to SessionScope
 
