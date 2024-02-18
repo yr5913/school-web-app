@@ -69,3 +69,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 28. deny all requests using denyAll
 29. modified security configuration for each url
 30. Testing default CSRF security behaviour by spring
+31. Disable CSRF
