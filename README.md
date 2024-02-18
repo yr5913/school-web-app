@@ -1,8 +1,10 @@
 # SpringBeans
 
-This project works on creating a school web application using spring boot. This project has step by step incremental
-changes in the spring boot application, which enables learning.
+This project works on creating a school web application using spring boot. This project works with spring beans, spring
+mvc, spring security, lombok, request validations
+This project has step by step incremental changes in the spring boot application, which enables learning.
 You can look at the commit history section of the readme file to understand the incremental changes made to this project
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
@@ -55,11 +57,13 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 17. Made changes to use Lombok for pojos
 18. Used slf4j for logging
 19. Added request params for displaying holidays to filter holidays based on request params
-20. Changed the holidays filter from request params to path variables, by default display all holidays, if filter is used display holidays related to the filter
+20. Changed the holidays filter from request params to path variables, by default display all holidays, if filter is
+    used display holidays related to the filter
 21. Added server side field validations using jakarta validations
 22. Working with request scope by changing the contact service to RequestScope
 23. Working with session scope by changing the contact service to SessionScope
 24. Working with application scope by changing the contact service to ApplicationScope
-25. Implemented default spring security by adding dependency 
+25. Implemented default spring security by adding dependency
 26. Changed default spring credentials using application.properties
 27. created custom security filter chain and permitting all web pages using permitAll
+28. deny all requests using denyAll
