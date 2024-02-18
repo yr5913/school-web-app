@@ -72,3 +72,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 31. Disable CSRF
 32. Implemented in memory authentication using InMemoryUserDetailsManager
 33. Changed spring security logic to handle custom login configurations
+34. Added login and logout, dashboard pages
