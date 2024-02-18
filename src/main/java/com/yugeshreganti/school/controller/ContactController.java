@@ -2,12 +2,15 @@ package com.yugeshreganti.school.controller;
 
 import com.yugeshreganti.school.model.Contact;
 import com.yugeshreganti.school.service.ContactService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @Slf4j
@@ -21,7 +24,8 @@ public class ContactController {
     }
 
     @RequestMapping("/contact")
-    public String displayContactPage() {
+    public String displayContactPage(Model model) {
+        model.addAttribute("contact", new Contact());
         return "contact.html";
     }
 
@@ -41,9 +45,14 @@ public class ContactController {
 
 
     @PostMapping(value = "/saveMsg")
-    public ModelAndView saveMessage(Contact contact) {
+    public String saveMessage(@Valid @ModelAttribute Contact contact, Errors errors) {
         contactService.saveMessage(contact);
-        return new ModelAndView("redirect:/contact");
+        if (errors.hasErrors()) {
+            log.error("Errors are present in the contact form" + errors);
+            return "contact.html";
+        }
+
+        return "redirect:/contact";
 
     }
 }
