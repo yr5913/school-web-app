@@ -44,4 +44,5 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 5. excluding DataSourceAutoConfiguration.class to test
 6. multiple paths to single controller method
 7. Using thymeleaf to usage templates for displaying dynamic content for the home page
+8. disabling thymeleaf cache using spring properties
 
