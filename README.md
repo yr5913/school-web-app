@@ -54,4 +54,5 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 15. Changed controller method for contact page form to accept pojo instead of requestparams
 16. Added Holidays controller to fetch holidays from backend using thymeleaf th:each and th:item
 17. Made changes to use Lombok for pojos
+18. Used slf4j for logging
 
