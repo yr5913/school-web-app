@@ -19,7 +19,7 @@ public class SecurityConfig {
 
 
     @Bean
-    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http , HandlerMappingIntrospector introspector) throws Exception {
+    SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
         //http.authorizeHttpRequests((requests) -> requests.anyRequest().permitAll());
         //http.authorizeHttpRequests((requests) -> requests.anyRequest().denyAll());
 
@@ -27,16 +27,19 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests((requests) ->
                 requests.requestMatchers(mvcMatcherBuilder.pattern("/home")).permitAll()
-                .requestMatchers("/holidays/**").permitAll()
-                .requestMatchers("/contact").permitAll()
-                .requestMatchers("/saveMsg").permitAll()
-                .requestMatchers("/courses").permitAll()
-                .requestMatchers("/about").permitAll()
-                .requestMatchers("/assets/**").permitAll()
-                .requestMatchers("/dashboard").authenticated()
-                .requestMatchers("/login").permitAll()
-                .requestMatchers("/logout").permitAll()
-                .requestMatchers(PathRequest.toH2Console()).permitAll()
+                        .requestMatchers(mvcMatcherBuilder.pattern("/")).permitAll()
+                        .requestMatchers("/holidays/**").permitAll()
+                        .requestMatchers("/contact").permitAll()
+                        .requestMatchers("/saveMsg").permitAll()
+                        .requestMatchers("/courses").permitAll()
+                        .requestMatchers("/about").permitAll()
+                        .requestMatchers("/assets/**").permitAll()
+                        .requestMatchers(mvcMatcherBuilder.pattern("/dashboard")).authenticated()
+                        .requestMatchers(mvcMatcherBuilder.pattern("/displayMessages")).hasRole("ADMIN")
+
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/logout").permitAll()
+                        .requestMatchers(PathRequest.toH2Console()).permitAll()
         );
         //http.csrf(AbstractHttpConfigurer::disable);
         http.csrf(csrf -> csrf.ignoringRequestMatchers("/saveMsg").ignoringRequestMatchers(PathRequest.toH2Console()));

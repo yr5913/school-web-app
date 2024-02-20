@@ -76,3 +76,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 35. Handling Global Exception using @ControllerAdvice and @ExceptionHandler
 36. Added CSRF configuration to prevent CSRF attack
 37. configured in memory h2 database
+38. added saveContact and display contacts
