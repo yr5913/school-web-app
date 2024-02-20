@@ -3,7 +3,6 @@ package com.yugeshreganti.school.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -29,11 +28,13 @@ public class SecurityConfig {
                 .requestMatchers("/assets/**").permitAll()
                 .requestMatchers("/dashboard").authenticated()
                 .requestMatchers("/login").permitAll()
+                .requestMatchers("/logout").permitAll()
         );
-        http.csrf(AbstractHttpConfigurer::disable);
+        //http.csrf(AbstractHttpConfigurer::disable);
+        http.csrf(csrf -> csrf.ignoringRequestMatchers("/saveMsg"));
         http.formLogin(formLogin -> formLogin.loginPage("/login").defaultSuccessUrl("/dashboard")
                 .failureUrl("/login?error=true").permitAll());
-        http.logout(logout -> logout.logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll());
+        //http.logout(logout -> logout.logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll());
         http.httpBasic(withDefaults());
         return http.build();
     }

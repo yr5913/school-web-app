@@ -73,3 +73,5 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 32. Implemented in memory authentication using InMemoryUserDetailsManager
 33. Changed spring security logic to handle custom login configurations
 34. Added login and logout, dashboard pages with thymeleaf support
+35. Handling Global Exception using @ControllerAdvice and @ExceptionHandler
+36. Added CSRF configuration to prevent CSRF attack
