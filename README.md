@@ -75,3 +75,8 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 34. Added login and logout, dashboard pages with thymeleaf support
 35. Handling Global Exception using @ControllerAdvice and @ExceptionHandler
 36. Added CSRF configuration to prevent CSRF attack
+37. configured in memory h2 database
+38. added saveContact and display contacts
+39. implemented closing message functionality for admin
+40. implemented aop for logging exceptions and time taken for each method
+41. Displaying holidays from H2 Database
