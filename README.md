@@ -79,3 +79,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 38. added saveContact and display contacts
 39. implemented closing message functionality for admin
 40. implemented aop for logging exceptions and time taken for each method
+41. Displaying holidays from H2 Database
