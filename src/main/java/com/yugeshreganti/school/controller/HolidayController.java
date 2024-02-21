@@ -1,7 +1,7 @@
 package com.yugeshreganti.school.controller;
 
 import com.yugeshreganti.school.model.Holiday;
-import com.yugeshreganti.school.respository.HolidaysRepository;
+import com.yugeshreganti.school.repository.HolidaysRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Controller
 @Slf4j
@@ -32,11 +33,13 @@ public class HolidayController {
             model.addAttribute("festival", true);
             model.addAttribute("federal", true);
         }
-        List<Holiday> holidays = holidaysRepository.findAllHolidays();
+        Iterable<Holiday> holidays = holidaysRepository.findAll();
+        List<Holiday> holidayList = StreamSupport.stream(holidays.spliterator(), true).toList();
+
         Holiday.Type[] types = Holiday.Type.values();
         for (Holiday.Type type : types) {
             model.addAttribute(type.toString(),
-                    (holidays.stream().filter(holiday -> holiday.getType().equals(type)).collect(Collectors.toList())));
+                    (holidayList.stream().filter(holiday -> holiday.getType().equals(type)).collect(Collectors.toList())));
         }
         return "holidays.html";
     }
