@@ -80,3 +80,7 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 39. implemented closing message functionality for admin
 40. implemented aop for logging exceptions and time taken for each method
 41. Displaying holidays from H2 Database
+42. Changed everything from h2 database to mysql
+43. add spring jpa dependency and migrated code from spring jdbc to spring data jpa
+44. used spring data jpa audit feature for auditing the entries in database tables
+45. Added changes for registering user and used custom validations to validate fields in registration

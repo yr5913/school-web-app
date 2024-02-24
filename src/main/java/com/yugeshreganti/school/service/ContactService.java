@@ -2,7 +2,7 @@ package com.yugeshreganti.school.service;
 
 import com.yugeshreganti.school.constants.EazySchoolConstants;
 import com.yugeshreganti.school.model.Contact;
-import com.yugeshreganti.school.respository.ContactRepository;
+import com.yugeshreganti.school.repository.ContactRepository;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
 
-import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -31,27 +31,33 @@ public class ContactService {
     }
 
 
-    public boolean saveMessage(Contact contact){
+    public boolean saveMessage(Contact contact) {
         boolean isSaved = false;
         contact.setStatus(EazySchoolConstants.OPEN);
-        contact.setCreatedBy(EazySchoolConstants.ANONYMOUS);
-        contact.setCreatedAt(LocalDateTime.now());
-        int result = contactRepository.saveContactMsg(contact);
-        if(result>0) {
+        Contact savedContact = contactRepository.save(contact);
+        if (savedContact.getContactId() > 0) {
             isSaved = true;
         }
         return isSaved;
     }
 
-    public List<Contact> findMsgsWithOpenStatus(){
-        List<Contact> contactMsgs = contactRepository.findMsgsWithStatus(EazySchoolConstants.OPEN);
-        return contactMsgs;
+    public List<Contact> findMsgsWithOpenStatus() {
+        return contactRepository.findByStatus(EazySchoolConstants.OPEN);
     }
 
-    public boolean updateMsgStatus(int contactId, String updatedBy){
+    public boolean updateMsgStatus(int contactId) {
         boolean isUpdated = false;
-        int result = contactRepository.updateMsgStatus(contactId,EazySchoolConstants.CLOSE, updatedBy);
-        if(result>0) {
+
+        Optional<Contact> contact = contactRepository.findById(contactId);
+        contact.ifPresent(contact1 -> {
+            contact1.setStatus(EazySchoolConstants.CLOSE);
+        });
+        if (contact.isEmpty()) {
+            return isUpdated;
+        }
+
+        Contact savedContact = contactRepository.save(contact.get());
+        if (savedContact.getContactId() > 0) {
             isUpdated = true;
         }
         return isUpdated;

@@ -1,6 +1,5 @@
 package com.yugeshreganti.school.config;
 
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -26,29 +25,36 @@ public class SecurityConfig {
         MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
 
         http.authorizeHttpRequests((requests) ->
-                requests.requestMatchers(mvcMatcherBuilder.pattern("/home")).permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern("/")).permitAll()
-                        .requestMatchers("/holidays/**").permitAll()
-                        .requestMatchers("/contact").permitAll()
-                        .requestMatchers("/saveMsg").permitAll()
-                        .requestMatchers("/courses").permitAll()
-                        .requestMatchers("/about").permitAll()
-                        .requestMatchers("/assets/**").permitAll()
-                        .requestMatchers(mvcMatcherBuilder.pattern("/dashboard")).authenticated()
-                        .requestMatchers(mvcMatcherBuilder.pattern("/displayMessages")).hasRole("ADMIN")
-                        .requestMatchers(mvcMatcherBuilder.pattern("/closeMsg/**")).hasRole("ADMIN")
+                        requests.requestMatchers(mvcMatcherBuilder.pattern("/home")).permitAll()
+                                .requestMatchers(mvcMatcherBuilder.pattern("/")).permitAll()
+                                .requestMatchers("/holidays/**").permitAll()
+                                .requestMatchers("/contact").permitAll()
+                                .requestMatchers("/saveMsg").permitAll()
+                                .requestMatchers("/courses").permitAll()
+                                .requestMatchers("/about").permitAll()
+                                .requestMatchers("/assets/**").permitAll()
+                                .requestMatchers(mvcMatcherBuilder.pattern("/dashboard")).authenticated()
+                                .requestMatchers(mvcMatcherBuilder.pattern("/displayMessages")).hasRole("ADMIN")
+                                .requestMatchers(mvcMatcherBuilder.pattern("/closeMsg/**")).hasRole("ADMIN")
 
-                        .requestMatchers("/login").permitAll()
-                        .requestMatchers("/logout").permitAll()
-                        .requestMatchers(PathRequest.toH2Console()).permitAll()
+                                .requestMatchers("/login").permitAll()
+                                .requestMatchers("/logout").permitAll()
+                                .requestMatchers("/error/**").permitAll()
+                                .requestMatchers("/public/**").permitAll()
+//                        .requestMatchers(PathRequest.toH2Console()).permitAll()
         );
         //http.csrf(AbstractHttpConfigurer::disable);
-        http.csrf(csrf -> csrf.ignoringRequestMatchers("/saveMsg").ignoringRequestMatchers(PathRequest.toH2Console()));
+        http.csrf(csrf -> csrf.ignoringRequestMatchers("/saveMsg")
+                .ignoringRequestMatchers("/public/**")
+        );
+//        http.csrf(csrf -> csrf.ignoringRequestMatchers("/saveMsg")
+//                .ignoringRequestMatchers(PathRequest.toH2Console()));
         http.formLogin(formLogin -> formLogin.loginPage("/login").defaultSuccessUrl("/dashboard")
                 .failureUrl("/login?error=true").permitAll());
         //http.logout(logout -> logout.logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll());
         http.httpBasic(withDefaults());
-        http.headers(httpSecurityHeadersConfigurer -> httpSecurityHeadersConfigurer.frameOptions(withDefaults()).disable());
+//        http.headers(httpSecurityHeadersConfigurer ->
+//                httpSecurityHeadersConfigurer.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
         return http.build();
     }
 
