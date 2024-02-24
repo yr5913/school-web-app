@@ -58,6 +58,8 @@ public class Person extends BaseEntity {
     @Transient
     private String confirmPwd;
 
+
+    //// one to one mapping between tables, with fetch and cascade types
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Roles.class)
     @JoinColumn(name = "role_id", referencedColumnName = "roleId", nullable = false)
     private Roles roles;
