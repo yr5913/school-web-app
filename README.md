@@ -90,3 +90,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 49. modified data.sql to have hashed password for admin
 50. disabled the javax validations in spring data jpa
 51. added profile link for any logged in user
+52. Added Profile web page and profile model for profile page

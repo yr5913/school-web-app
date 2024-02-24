@@ -32,6 +32,8 @@ public class SecurityConfig {
                                 .requestMatchers("/courses").permitAll()
                                 .requestMatchers("/about").permitAll()
                                 .requestMatchers("/assets/**").permitAll()
+                                .requestMatchers("/displayProfile").authenticated()
+                                .requestMatchers("/updateProfile").authenticated()
                                 .requestMatchers(mvcMatcherBuilder.pattern("/dashboard")).authenticated()
                                 .requestMatchers(mvcMatcherBuilder.pattern("/displayMessages")).hasRole("ADMIN")
                                 .requestMatchers(mvcMatcherBuilder.pattern("/closeMsg/**")).hasRole("ADMIN")
