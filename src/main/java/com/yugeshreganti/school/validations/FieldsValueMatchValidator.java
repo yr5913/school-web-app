@@ -25,8 +25,8 @@ public class FieldsValueMatchValidator
         Object fieldMatchValue = new BeanWrapperImpl(value)
                 .getPropertyValue(fieldMatch);
         if (fieldValue != null) {
-            if (fieldValue.toString().startsWith(BCryptPasswordEncoder.BCryptVersion.$2A.getVersion()))
-                return true;
+//            if (fieldValue.toString().startsWith(BCryptPasswordEncoder.BCryptVersion.$2A.getVersion()))
+//                return true;
             return fieldValue.equals(fieldMatchValue);
         } else {
             return fieldMatchValue == null;
