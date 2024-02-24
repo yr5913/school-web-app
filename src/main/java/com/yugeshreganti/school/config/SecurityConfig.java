@@ -40,10 +40,13 @@ public class SecurityConfig {
                                 .requestMatchers("/login").permitAll()
                                 .requestMatchers("/logout").permitAll()
                                 .requestMatchers("/error/**").permitAll()
+                                .requestMatchers("/public/**").permitAll()
 //                        .requestMatchers(PathRequest.toH2Console()).permitAll()
         );
         //http.csrf(AbstractHttpConfigurer::disable);
-        http.csrf(csrf -> csrf.ignoringRequestMatchers("/saveMsg"));
+        http.csrf(csrf -> csrf.ignoringRequestMatchers("/saveMsg")
+                .ignoringRequestMatchers("/public/**")
+        );
 //        http.csrf(csrf -> csrf.ignoringRequestMatchers("/saveMsg")
 //                .ignoringRequestMatchers(PathRequest.toH2Console()));
         http.formLogin(formLogin -> formLogin.loginPage("/login").defaultSuccessUrl("/dashboard")
