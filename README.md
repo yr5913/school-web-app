@@ -89,3 +89,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 48. using password encoder for encoding passwords and storing them as hash values in database
 49. modified data.sql to have hashed password for admin
 50. disabled the javax validations in spring data jpa
+51. added profile link for any logged in user
