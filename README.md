@@ -87,3 +87,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 46. added one to one relationship and changed code to register user into database
 47. configured sign in using the credentials in the database using spring security
 48. using password encoder for encoding passwords and storing them as hash values in database
+49. modified data.sql to have hashed password for admin

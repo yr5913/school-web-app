@@ -29,4 +29,4 @@ INSERT INTO `roles` (`role_name`,`created_at`, `created_by`)
   VALUES ('STUDENT',CURDATE(),'DBA');
 
 INSERT INTO `person` (`name`,`email`,`mobile_number`,`pwd`,`role_id`,`created_at`, `created_by`)
-  VALUES ('Admin','admin@eazyschool.com','3443434343','admin', 1 ,CURDATE(),'DBA');
+  VALUES ('Admin','admin@eazyschool.com','3443434343','$2a$10$yMu84pkjlEuVdogzPOvPre4gAp5N38Di0W6oYpGopqd92gxrRZCTS', 1 ,CURDATE(),'DBA');
