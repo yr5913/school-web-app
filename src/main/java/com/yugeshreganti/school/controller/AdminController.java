@@ -1,8 +1,10 @@
 package com.yugeshreganti.school.controller;
 
 
+import com.yugeshreganti.school.model.Courses;
 import com.yugeshreganti.school.model.EazyClass;
 import com.yugeshreganti.school.model.Person;
+import com.yugeshreganti.school.repository.CoursesRepository;
 import com.yugeshreganti.school.repository.EazyClassRepository;
 import com.yugeshreganti.school.repository.PersonRepository;
 import jakarta.servlet.http.HttpSession;
@@ -28,6 +30,10 @@ public class AdminController {
 
     @Autowired
     private PersonRepository personRepository;
+
+
+    @Autowired
+    private CoursesRepository coursesRepository;
 
     @RequestMapping("/displayClasses")
     public ModelAndView displayMessages(Model model) {
@@ -100,6 +106,56 @@ public class AdminController {
         EazyClass eazyClassSaved = eazyClassRepository.save(eazyClass);
         session.setAttribute("eazyClass", eazyClassSaved);
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/displayStudents?classId=" + eazyClass.getClassId());
+        return modelAndView;
+    }
+
+    @GetMapping("/displayCourses")
+    public ModelAndView displayCourses(Model model) {
+        List<Courses> courses = coursesRepository.findAll();
+        ModelAndView modelAndView = new ModelAndView("courses_secure.html");
+        modelAndView.addObject("courses", courses);
+        modelAndView.addObject("course", new Courses());
+        return modelAndView;
+    }
+
+    @PostMapping("/addNewCourse")
+    public ModelAndView addNewCourse(Model model, @ModelAttribute("course") Courses course) {
+        ModelAndView modelAndView = new ModelAndView();
+        coursesRepository.save(course);
+        modelAndView.setViewName("redirect:/admin/displayCourses");
+        return modelAndView;
+    }
+
+    @GetMapping("/viewStudents")
+    public ModelAndView viewStudents(Model model, @RequestParam int id
+            , HttpSession httpSession, @RequestParam(required = false) String error) {
+        ModelAndView modelAndView = new ModelAndView("course_students.html");
+        Optional<Courses> courses = coursesRepository.findById(id);
+        if (error != null) {
+            modelAndView.addObject("errorMessage", "Invalid Email Entered!!");
+        }
+        modelAndView.addObject("courses", courses.get());
+        modelAndView.addObject("person", new Person());
+        httpSession.setAttribute("courses", courses.get());
+        return modelAndView;
+    }
+
+    @PostMapping("/addStudentToCourse")
+    public ModelAndView addStudentToCourse(Model model, @ModelAttribute("person") Person person,
+                                           HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView();
+        Courses courses = (Courses) session.getAttribute("courses");
+        Person personEntity = personRepository.readByEmail(person.getEmail());
+        if (personEntity == null || !(personEntity.getPersonId() > 0)) {
+            modelAndView.setViewName("redirect:/admin/viewStudents?id=" + courses.getCourseId()
+                    + "&error=true");
+            return modelAndView;
+        }
+        personEntity.getCourses().add(courses);
+        courses.getPersons().add(personEntity);
+        personRepository.save(personEntity);
+        session.setAttribute("courses", courses);
+        modelAndView.setViewName("redirect:/admin/viewStudents?id=" + courses.getCourseId());
         return modelAndView;
     }
 }
