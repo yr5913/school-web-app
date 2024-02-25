@@ -100,3 +100,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 59. Added courses schema and many to many relationship between person and courses and gave admin options to add new
     course
 60. added an admin feature to add students to the courses
+61. Added delete feature for deleting students from courses by admin
