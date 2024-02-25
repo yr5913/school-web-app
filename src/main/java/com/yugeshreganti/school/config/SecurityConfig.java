@@ -34,6 +34,7 @@ public class SecurityConfig {
                                 .requestMatchers("/assets/**").permitAll()
                                 .requestMatchers("/displayProfile").authenticated()
                                 .requestMatchers("/updateProfile").authenticated()
+                                .requestMatchers("/admin/**").hasRole("ADMIN")
                                 .requestMatchers(mvcMatcherBuilder.pattern("/dashboard")).authenticated()
                                 .requestMatchers(mvcMatcherBuilder.pattern("/displayMessages")).hasRole("ADMIN")
                                 .requestMatchers(mvcMatcherBuilder.pattern("/closeMsg/**")).hasRole("ADMIN")
