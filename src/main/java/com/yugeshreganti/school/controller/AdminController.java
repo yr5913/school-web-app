@@ -1,6 +1,7 @@
 package com.yugeshreganti.school.controller;
 
 
+import com.yugeshreganti.school.model.EazyClass;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ public class AdminController {
     @RequestMapping("/displayClasses")
     public ModelAndView displayMessages(Model model) {
         ModelAndView modelAndView = new ModelAndView("classes.html");
+        modelAndView.addObject("eazyClass", new EazyClass());
         return modelAndView;
     }
 }

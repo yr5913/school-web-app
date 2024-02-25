@@ -94,3 +94,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 53. Displayed user profile details using http session and setting authentication username to the email
 54. made changes to provide user a feature to update his profile
 55. added links and security config for admin
+56. added class schema and defined one to many relationship between class and person
