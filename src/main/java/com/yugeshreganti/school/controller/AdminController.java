@@ -5,6 +5,7 @@ import com.yugeshreganti.school.model.EazyClass;
 import com.yugeshreganti.school.model.Person;
 import com.yugeshreganti.school.repository.EazyClassRepository;
 import com.yugeshreganti.school.repository.PersonRepository;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,8 +59,47 @@ public class AdminController {
 
 
     @GetMapping("/displayStudents")
-    public ModelAndView displayStudents(Model model, @RequestParam int classId) {
+    public ModelAndView displayStudents(Model model, @RequestParam int classId, HttpSession session,
+                                        @RequestParam(value = "error", required = false) String error) {
+
         ModelAndView modelAndView = new ModelAndView("students.html");
+        Optional<EazyClass> eazyClass = eazyClassRepository.findById(classId);
+        modelAndView.addObject("eazyClass", eazyClass.get());
+        modelAndView.addObject("person", new Person());
+        session.setAttribute("eazyClass", eazyClass.get());
+        if (error != null) {
+            modelAndView.addObject("errorMessage", "Invalid Email entered!!");
+        }
+        return modelAndView;
+    }
+
+    @PostMapping("/addStudent")
+    public ModelAndView addStudent(Model model, @ModelAttribute("person") Person person, HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView();
+        EazyClass eazyClass = (EazyClass) session.getAttribute("eazyClass");
+        Person personEntity = personRepository.readByEmail(person.getEmail());
+        if (personEntity == null || !(personEntity.getPersonId() > 0)) {
+            modelAndView.setViewName("redirect:/admin/displayStudents?classId=" + eazyClass.getClassId()
+                    + "&error=true");
+            return modelAndView;
+        }
+        personEntity.setEazyClass(eazyClass);
+        personRepository.save(personEntity);
+        eazyClass.getPersons().add(personEntity);
+        eazyClassRepository.save(eazyClass);
+        modelAndView.setViewName("redirect:/admin/displayStudents?classId=" + eazyClass.getClassId());
+        return modelAndView;
+    }
+
+    @GetMapping("/deleteStudent")
+    public ModelAndView deleteStudent(Model model, @RequestParam int personId, HttpSession session) {
+        EazyClass eazyClass = (EazyClass) session.getAttribute("eazyClass");
+        Optional<Person> person = personRepository.findById(personId);
+        person.get().setEazyClass(null);
+        eazyClass.getPersons().remove(person.get());
+        EazyClass eazyClassSaved = eazyClassRepository.save(eazyClass);
+        session.setAttribute("eazyClass", eazyClassSaved);
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/displayStudents?classId=" + eazyClass.getClassId());
         return modelAndView;
     }
 }
