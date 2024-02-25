@@ -95,3 +95,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 54. made changes to provide user a feature to update his profile
 55. added links and security config for admin
 56. added class schema and defined one to many relationship between class and person
+57. added backend code to display classes for admin and option to add and delete classes
