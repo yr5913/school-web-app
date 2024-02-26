@@ -104,3 +104,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 62. Made changes to student dashboard to display his class name
 63. Added courses page for students
 64. Displaying courses ordered by name in ascending order
+65. Displaying courses ordered by name in descending order
