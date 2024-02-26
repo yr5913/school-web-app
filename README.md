@@ -105,3 +105,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 63. Added courses page for students
 64. Displaying courses ordered by name in ascending order
 65. Displaying courses ordered by name in descending order
+66. Used Dynamic sorting to display courses ordered by name in descending order
