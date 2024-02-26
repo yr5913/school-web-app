@@ -3,9 +3,8 @@ package com.yugeshreganti.school.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
@@ -25,22 +24,25 @@ public class SecurityConfig {
         MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
 
         http.authorizeHttpRequests((requests) ->
-                        requests.requestMatchers(mvcMatcherBuilder.pattern("/home")).permitAll()
-                                .requestMatchers(mvcMatcherBuilder.pattern("/")).permitAll()
-                                .requestMatchers("/holidays/**").permitAll()
-                                .requestMatchers("/contact").permitAll()
-                                .requestMatchers("/saveMsg").permitAll()
-                                .requestMatchers("/courses").permitAll()
-                                .requestMatchers("/about").permitAll()
-                                .requestMatchers("/assets/**").permitAll()
-                                .requestMatchers(mvcMatcherBuilder.pattern("/dashboard")).authenticated()
-                                .requestMatchers(mvcMatcherBuilder.pattern("/displayMessages")).hasRole("ADMIN")
-                                .requestMatchers(mvcMatcherBuilder.pattern("/closeMsg/**")).hasRole("ADMIN")
-
+                requests.requestMatchers(mvcMatcherBuilder.pattern("/home")).permitAll()
+                        .requestMatchers(mvcMatcherBuilder.pattern("/")).permitAll()
+                        .requestMatchers("/holidays/**").permitAll()
+                        .requestMatchers("/contact").permitAll()
+                        .requestMatchers("/saveMsg").permitAll()
+                        .requestMatchers("/courses").permitAll()
+                        .requestMatchers("/about").permitAll()
+                        .requestMatchers("/assets/**").permitAll()
+                        .requestMatchers("/displayProfile").authenticated()
+                        .requestMatchers("/updateProfile").authenticated()
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers(mvcMatcherBuilder.pattern("/dashboard")).authenticated()
+                        .requestMatchers(mvcMatcherBuilder.pattern("/displayMessages")).hasRole("ADMIN")
+                        .requestMatchers(mvcMatcherBuilder.pattern("/closeMsg/**")).hasRole("ADMIN")
+                        .requestMatchers("/student/**").hasRole("STUDENT")
                                 .requestMatchers("/login").permitAll()
-                                .requestMatchers("/logout").permitAll()
-                                .requestMatchers("/error/**").permitAll()
-                                .requestMatchers("/public/**").permitAll()
+                .requestMatchers("/logout").permitAll()
+                .requestMatchers("/error/**").permitAll()
+                .requestMatchers("/public/**").permitAll()
 //                        .requestMatchers(PathRequest.toH2Console()).permitAll()
         );
         //http.csrf(AbstractHttpConfigurer::disable);
@@ -58,21 +60,9 @@ public class SecurityConfig {
         return http.build();
     }
 
-
     @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-        UserDetails admin = User.
-                withDefaultPasswordEncoder()
-                .username("admin")
-                .password("test")
-                .roles("USER", "ADMIN")
-                .build();
-        UserDetails user = User.
-                withDefaultPasswordEncoder()
-                .username("user")
-                .password("test")
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(admin, user);
+    public PasswordEncoder getPasswordEncoder() {
+        return new BCryptPasswordEncoder();
     }
+
 }

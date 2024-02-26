@@ -84,3 +84,22 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 43. add spring jpa dependency and migrated code from spring jdbc to spring data jpa
 44. used spring data jpa audit feature for auditing the entries in database tables
 45. Added changes for registering user and used custom validations to validate fields in registration
+46. added one to one relationship and changed code to register user into database
+47. configured sign in using the credentials in the database using spring security
+48. using password encoder for encoding passwords and storing them as hash values in database
+49. modified data.sql to have hashed password for admin
+50. disabled the javax validations in spring data jpa
+51. added profile link for any logged in user
+52. Added Profile web page and profile model for profile page
+53. Displayed user profile details using http session and setting authentication username to the email
+54. made changes to provide user a feature to update his profile
+55. added links and security config for admin
+56. added class schema and defined one to many relationship between class and person
+57. added backend code to display classes for admin and option to add and delete classes
+58. added feature for admin to view, add and delete students from classes
+59. Added courses schema and many to many relationship between person and courses and gave admin options to add new
+    course
+60. added an admin feature to add students to the courses
+61. Added delete feature for deleting students from courses by admin
+62. Made changes to student dashboard to display his class name
+63. Added courses page for students
