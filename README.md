@@ -101,3 +101,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
     course
 60. added an admin feature to add students to the courses
 61. Added delete feature for deleting students from courses by admin
+62. Made changes to student dashboard to display his class name
