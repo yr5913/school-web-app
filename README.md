@@ -103,3 +103,11 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 61. Added delete feature for deleting students from courses by admin
 62. Made changes to student dashboard to display his class name
 63. Added courses page for students
+64. Displaying courses ordered by name in ascending order
+65. Displaying courses ordered by name in descending order
+66. Used Dynamic sorting to display courses ordered by name in descending order
+67. Implemented pagination using pageable interface to display messages
+68. Usage of @Query for custom queries in JPA, used both JPQL Query and Native Query
+69. Using @Query, @Modifying and @Transactional in JPA to update data
+70. Using @NamedQuery
+71. using @NamedNativeQuery, spring doesn't support dynamic sorting if we use Named native query
