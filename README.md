@@ -122,3 +122,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 80. Allowing cross origin from everyone
 81. Added support to also send response in xml format using MediaType in produces
 82. Ignored audit details in the response using @JsonIgnore
+83. Using @JsonProperty to change the variable name in response body, this works for any response type(i.e xml or json)
