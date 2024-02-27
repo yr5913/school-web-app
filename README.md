@@ -115,3 +115,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 73. Get contact messages using spring mvc style rest endpoint, this time with request body using @RequestBody instead of request params
 74. Using @RestController for the rest endpoints instead of using spring mvc style
 75. Using @RequestHeader to get header value and also using ResponseEntity to populate response status, header and body in the response
+76. Fixed CSRF issue for Post Requests and fixed authentication methods

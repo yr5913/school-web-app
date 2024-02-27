@@ -32,7 +32,7 @@ public class EazySchoolUsernamePwdAuthenticationProvider
         String email = authentication.getName();
         String pwd = authentication.getCredentials().toString();
         Person person = personRepository.readByEmail(email);
-        if (passwordEncoder.matches(pwd, person.getPwd())) {
+        if (person != null && passwordEncoder.matches(pwd, person.getPwd())) {
             return new UsernamePasswordAuthenticationToken(
                     person.getEmail(), null, getGrantedAuthorities(person.getRoles()));
         } else {

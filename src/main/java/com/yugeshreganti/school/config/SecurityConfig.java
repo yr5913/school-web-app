@@ -49,7 +49,7 @@ public class SecurityConfig {
         //http.csrf(AbstractHttpConfigurer::disable);
         http.csrf(csrf -> csrf.ignoringRequestMatchers("/saveMsg")
                 .ignoringRequestMatchers("/public/**")
-                .ignoringRequestMatchers("/rest/**")
+                .ignoringRequestMatchers("/api/**")
         );
 //        http.csrf(csrf -> csrf.ignoringRequestMatchers("/saveMsg")
 //                .ignoringRequestMatchers(PathRequest.toH2Console()));
