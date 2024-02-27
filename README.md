@@ -117,3 +117,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 75. Using @RequestHeader to get header value and also using ResponseEntity to populate response status, header and body in the response
 76. Fixed CSRF issue for Post Requests and fixed authentication methods
 77. Using @DeleteMapping to delete contact message and using RequestEntity object to get request details
+78. Used @PatchMapping to patch the contact message to change the status from open to close
