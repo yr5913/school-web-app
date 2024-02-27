@@ -113,3 +113,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 71. using @NamedNativeQuery, spring doesn't support dynamic sorting if we use Named native query
 72. Added REST endpoints for getting contact messages using spring mvc style with the help of @ResponseBody annotation
 73. Get contact messages using spring mvc style rest endpoint, this time with request body using @RequestBody instead of request params
+74. Using @RestController for the rest endpoints instead of using spring mvc style
