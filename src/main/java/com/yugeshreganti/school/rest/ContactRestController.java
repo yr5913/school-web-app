@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 @RestController
 @Slf4j
 @RequestMapping(path = "/api/contact")
+@CrossOrigin(origins = "*")
 public class ContactRestController {
 
     @Autowired
@@ -73,13 +74,13 @@ public class ContactRestController {
     }
 
     @PatchMapping("/closeMsg")
-    public ResponseEntity<Response> closeMsg(@RequestBody Contact contactReq){
+    public ResponseEntity<Response> closeMsg(@RequestBody Contact contactReq) {
         Response response = new Response();
         Optional<Contact> contact = contactRepository.findById(contactReq.getContactId());
-        if(contact.isPresent()){
+        if (contact.isPresent()) {
             contact.get().setStatus(EazySchoolConstants.CLOSE);
             contactRepository.save(contact.get());
-        }else{
+        } else {
             response.setStatusCode("400");
             response.setStatusMsg("Invalid Contact ID received");
             return ResponseEntity
