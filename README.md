@@ -120,3 +120,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 78. Used @PatchMapping to patch the contact message to change the status from open to close
 79. Added GlobalExceptionHandler to handle the errors in the RestController and specified order(1) to indicate priority as we have two exception handler
 80. Allowing cross origin from everyone
+81. Added support to also send response in xml format using MediaType in produces
