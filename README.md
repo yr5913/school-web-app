@@ -109,3 +109,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 67. Implemented pagination using pageable interface to display messages
 68. Usage of @Query for custom queries in JPA, used both JPQL Query and Native Query
 69. Using @Query, @Modifying and @Transactional in JPA to update data
+70. Using @NamedQuery and @NativeNamedQuery
