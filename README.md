@@ -118,3 +118,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 76. Fixed CSRF issue for Post Requests and fixed authentication methods
 77. Using @DeleteMapping to delete contact message and using RequestEntity object to get request details
 78. Used @PatchMapping to patch the contact message to change the status from open to close
+79. Added GlobalExceptionHandler to handle the errors in the RestController and specified order(1) to indicate priority as we have two exception handler
