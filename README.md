@@ -111,3 +111,15 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 69. Using @Query, @Modifying and @Transactional in JPA to update data
 70. Using @NamedQuery
 71. using @NamedNativeQuery, spring doesn't support dynamic sorting if we use Named native query
+72. Added REST endpoints for getting contact messages using spring mvc style with the help of @ResponseBody annotation
+73. Get contact messages using spring mvc style rest endpoint, this time with request body using @RequestBody instead of request params
+74. Using @RestController for the rest endpoints instead of using spring mvc style
+75. Using @RequestHeader to get header value and also using ResponseEntity to populate response status, header and body in the response
+76. Fixed CSRF issue for Post Requests and fixed authentication methods
+77. Using @DeleteMapping to delete contact message and using RequestEntity object to get request details
+78. Used @PatchMapping to patch the contact message to change the status from open to close
+79. Added GlobalExceptionHandler to handle the errors in the RestController and specified order(1) to indicate priority as we have two exception handler
+80. Allowing cross origin from everyone
+81. Added support to also send response in xml format using MediaType in produces
+82. Ignored audit details in the response using @JsonIgnore
+83. Using @JsonProperty to change the variable name in response body, this works for any response type(i.e xml or json)
