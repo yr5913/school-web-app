@@ -9,7 +9,8 @@ import java.util.List;
 
 
 @Repository
-@RepositoryRestResource(path = "courses")
+@RepositoryRestResource( exported = false)
+//@RepositoryRestResource(path = "courses")
 public interface CoursesRepository extends JpaRepository<Courses, Integer> {
 
 
