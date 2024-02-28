@@ -134,3 +134,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 92. Ignoring courses repository endpoints in the spring data rest endpoints
 93. Revert the ignoring courses change and also logging exceptions to help to debug application
 94. enabled debug=true that logs all debug level and above level logs which belongs to spring framework
+95. added trace=true but commented as it logs all the logs from the spring framework
