@@ -138,3 +138,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 96. Enabled custom logging for custom packages using application properties
 97. grouping packages for enabled different log levels for the packaged groups
 98. Increase readability of the logs by enabled colors for different log levels
+99. added logback.xml to send logs to a log file
