@@ -130,3 +130,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 88. allowed contact and courseses rest apis form spring security config
 89. Changed the base path of the spring rest data and also for hal
 90. Securing the spring data rest endpoints and hal endpoint using spring security config
+91. Changed the spring data rest url for the courses path
