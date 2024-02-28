@@ -1,6 +1,7 @@
 package com.yugeshreganti.school.model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -54,6 +55,7 @@ public class Contact extends BaseEntity {
 
     @NotBlank(message = "Email must not be blank")
     @Email(message = "Provide email address")
+    @JsonProperty("contact_email")
     private String email;
 
     @NotBlank(message = "Subject must not be blank")
