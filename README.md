@@ -124,3 +124,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 82. Ignored audit details in the response using @JsonIgnore
 83. Using @JsonProperty to change the variable name in response body, this works for any response type(i.e xml or json)
 84. Added dependencies for spring data rest and hal
+85. Changed bean name of Profile Controller we defined as it matches with spring data rest Profile Controller. Also changed security config to allow access to the /profile endpoint

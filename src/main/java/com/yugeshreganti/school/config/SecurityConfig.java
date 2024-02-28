@@ -44,6 +44,7 @@ public class SecurityConfig {
                                 .requestMatchers("/logout").permitAll()
                                 .requestMatchers("/error/**").permitAll()
                                 .requestMatchers("/public/**").permitAll()
+                                .requestMatchers("/profile/**").permitAll()
 //                        .requestMatchers(PathRequest.toH2Console()).permitAll()
         );
         //http.csrf(AbstractHttpConfigurer::disable);
