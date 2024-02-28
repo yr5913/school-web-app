@@ -29,6 +29,7 @@ public class GlobalExceptionRestController extends ResponseEntityExceptionHandle
 
     @ExceptionHandler({Exception.class})
     public ResponseEntity<Response> exceptionHandler(Exception exception){
+        log.error("Global Exception from Rest Controller occurred", exception);
         Response response = new Response("500",
                 exception.getMessage());
         return new ResponseEntity(response, HttpStatus.INTERNAL_SERVER_ERROR);
