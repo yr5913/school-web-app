@@ -13,6 +13,7 @@ public class GlobalExceptionController {
 
     @ExceptionHandler(Exception.class)
     public ModelAndView exceptionHandler(Exception exception) {
+        log.error("Global Exception from Controller occurred", exception);
         ModelAndView errorPage = new ModelAndView();
         errorPage.setViewName("error");
         errorPage.addObject("errormsg", exception.getMessage());

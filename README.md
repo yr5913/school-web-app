@@ -132,3 +132,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 90. Securing the spring data rest endpoints and hal endpoint using spring security config
 91. Changed the spring data rest url for the courses path
 92. Ignoring courses repository endpoints in the spring data rest endpoints
+93. Revert the ignoring courses change and also logging exceptions to help to debug application
