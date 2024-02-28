@@ -123,3 +123,13 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 81. Added support to also send response in xml format using MediaType in produces
 82. Ignored audit details in the response using @JsonIgnore
 83. Using @JsonProperty to change the variable name in response body, this works for any response type(i.e xml or json)
+84. Added dependencies for spring data rest and hal
+85. Changed bean name of Profile Controller we defined as it matches with spring data rest Profile Controller. Also changed security config to allow access to the /profile endpoint
+86. Removed ambiguity by changing one method name in two methods in contact repository has same name
+87. protecting pwd and prevent sending of unnecessary fields in json response using @JsonIgnore
+88. allowed contact and courseses rest apis form spring security config
+89. Changed the base path of the spring rest data and also for hal
+90. Securing the spring data rest endpoints and hal endpoint using spring security config
+91. Changed the spring data rest url for the courses path
+92. Ignoring courses repository endpoints in the spring data rest endpoints
+93. Revert the ignoring courses change and also logging exceptions to help to debug application
