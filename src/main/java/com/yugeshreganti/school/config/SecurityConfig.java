@@ -45,6 +45,8 @@ public class SecurityConfig {
                                 .requestMatchers("/error/**").permitAll()
                                 .requestMatchers("/public/**").permitAll()
                                 .requestMatchers("/profile/**").permitAll()
+                                .requestMatchers("/courseses/**").permitAll()
+                                .requestMatchers("/contacts/**").permitAll()
 //                        .requestMatchers(PathRequest.toH2Console()).permitAll()
         );
         //http.csrf(AbstractHttpConfigurer::disable);

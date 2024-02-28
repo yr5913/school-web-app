@@ -127,3 +127,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 85. Changed bean name of Profile Controller we defined as it matches with spring data rest Profile Controller. Also changed security config to allow access to the /profile endpoint
 86. Removed ambiguity by changing one method name in two methods in contact repository has same name
 87. protecting pwd and prevent sending of unnecessary fields in json response using @JsonIgnore
+88. allowed contact and courseses rest apis form spring security config
