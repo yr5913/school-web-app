@@ -137,3 +137,4 @@ Follow these steps to set up and run the Spring security Learner Microservice:
 95. added trace=true but commented as it logs all the logs from the spring framework
 96. Enabled custom logging for custom packages using application properties
 97. grouping packages for enabled different log levels for the packaged groups
+98. Increase readability of the logs by enabled colors for different log levels
